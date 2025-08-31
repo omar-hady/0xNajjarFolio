@@ -1,0 +1,117 @@
+/* Cyberpunk Effects - Additional Styles */
+
+/* Enhanced typing text effects - Subtle */
+.typing-text {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.typing-text.cyberpunk-mode {
+    color: #00ff00 !important;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.6) !important;
+    animation: none;
+}
+
+.typing-text.professional-mode {
+    color: var(--blue-neon) !important;
+    text-shadow: 0 0 6px rgba(0, 150, 199, 0.4) !important;
+}
+
+/* Cyberpunk pulse animation */
+@keyframes cyberpunkPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Enhanced footer logo effects - Subtle */
+.footer-logo {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.02);
+    text-shadow: 0 0 8px rgba(0, 180, 216, 0.6);
+}
+
+/* Particle explosion animation enhancement */
+@keyframes particleExplosion {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+        filter: brightness(1);
+    }
+    50% {
+        transform: translate(var(--x), var(--y)) scale(1.5);
+        opacity: 0.8;
+        filter: brightness(1.5);
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+        filter: brightness(0);
+    }
+}
+
+
+/* Enhanced matrix rain effect */
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* Cyberpunk glitch effect for section titles - Subtle */
+.section-title:hover {
+    animation: none;
+    transform: scale(1.01);
+    text-shadow: 0 0 6px rgba(0, 180, 216, 0.4);
+}
+
+/* Terminal cursor blink effect */
+.terminal-cursor {
+    animation: terminalBlink 1s infinite;
+}
+
+@keyframes terminalBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Enhanced button hover effects - Subtle */
+.action-btn:hover,
+.github-btn:hover,
+.submit-btn:hover {
+    animation: none;
+    box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Cyberpunk loading animation */
+.cyberpunk-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.cyberpunk-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 180, 216, 0.3), transparent);
+    animation: cyberpunkLoad 2s linear infinite;
+}
+
+@keyframes cyberpunkLoad {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
