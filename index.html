@@ -9,8 +9,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23000'/%3E%3Cpath d='M12 44 L24 20 L36 44 L52 20' stroke='%2300b4d8' stroke-width='4' fill='none'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cyberpunk-effects.css">
+    <meta property="og:title" content="Omar Alnajjar - Cybersecurity Analyst">
+    <meta property="og:description" content="Incident response, penetration testing, and digital forensics portfolio.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#00b4d8">
 </head>
 <body>
     <section id="home" class="hero">
@@ -22,7 +27,7 @@
             </div>
             <div class="nav-right">
                 <a href="#home" class="nav-link">//01. &lt;Home/&gt;</a>
-                <a href="https://blog.omaralnajjar.com" class="nav-link" target="_blank">//02. &lt;Blog/&gt;</a>
+                <a href="https://blog.omaralnajjar.com" class="nav-link" target="_blank" rel="noopener noreferrer" aria-label="Open Blog in new tab">//02. &lt;Blog/&gt;</a>
             </div>
         </div>
     </header>
@@ -71,16 +76,16 @@
                     <a href="#contact" class="action-btn">Contact</a>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/omar-hady" class="social-link">
+                    <a href="https://github.com/omar-hady" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/omarhadyalnajjar/" class="social-link">
+                    <a href="https://www.linkedin.com/in/omarhadyalnajjar/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:omarhadyabass@gmail.com" class="social-link">
+                    <a href="mailto:omarhadyabass@gmail.com" class="social-link" aria-label="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://wa.me/201552723383" class="social-link">
+                    <a href="https://wa.me/201552723383" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -133,7 +138,7 @@
                             </div>
                             <div class="terminal-line">
                                 <span class="prompt">$</span>
-                                <span class="command">transfer_initiated...</span>
+                                <span class="command">project_status: development_in_progress...</span>
                             </div>
                         </div>
                     </div>
@@ -142,7 +147,7 @@
                     <div class="project-card featured">
                         <div class="project-header">
                             <h3 class="project-title">LinkGuardian</h3>
-                            <div class="project-badge">Featured</div>
+                            <div class="project-badge featured">Featured</div>
                         </div>
                         <p class="project-description">
                             Advanced phishing URL detection system with real-time analysis and visual reporting. 
@@ -160,10 +165,10 @@
                         </div>
                     </div>
                     <div class="project-nav">
-                        <button class="nav-btn prev">
+                        <button class="nav-btn prev" aria-label="Previous project">
                             <i class="fas fa-chevron-left"></i>
                         </button>
-                        <button class="nav-btn next">
+                        <button class="nav-btn next" aria-label="Next project">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -294,7 +299,10 @@
             <h2 class="section-title">[PROJECTS]</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>LinkGuardian</h3>
+                    <div class="project-header">
+                        <h3 class="project-title">LinkGuardian</h3>
+                        <div class="project-badge featured">Featured</div>
+                    </div>
                     <p>Advanced phishing URL detection system with real-time analysis and visual reporting capabilities.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -303,7 +311,10 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <h3>NetworkScanner</h3>
+                    <div class="project-header">
+                        <h3 class="project-title">Network Scanner</h3>
+                        <div class="project-badge unreleased">Unreleased</div>
+                    </div>
                     <p>Comprehensive network reconnaissance tool for port scanning and device discovery.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -312,7 +323,10 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <h3>SecurePassManager</h3>
+                    <div class="project-header">
+                        <h3 class="project-title">Secure Pass Manager</h3>
+                        <div class="project-badge unreleased">Unreleased</div>
+                    </div>
                     <p>Encrypted password manager with advanced security features and breach monitoring.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -321,7 +335,10 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <h3>DigitalForensicsTool</h3>
+                    <div class="project-header">
+                        <h3 class="project-title">Digital Forensics Tool</h3>
+                        <div class="project-badge unreleased">Unreleased</div>
+                    </div>
                     <p>Digital evidence collection and analysis tool for incident response and investigations.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -330,7 +347,10 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <h3>ThreatIntelPlatform</h3>
+                    <div class="project-header">
+                        <h3 class="project-title">Threat Intel Platform</h3>
+                        <div class="project-badge unreleased">Unreleased</div>
+                    </div>
                     <p>Threat intelligence gathering and analysis platform for proactive security monitoring.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -339,7 +359,10 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <h3>VulnScanner</h3>
+                    <div class="project-header">
+                        <h3 class="project-title">Vuln Scanner</h3>
+                        <div class="project-badge unreleased">Unreleased</div>
+                    </div>
                     <p>Automated vulnerability scanner with detailed reporting and remediation guidance.</p>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -427,7 +450,7 @@
                             </div>
                             <div class="cert-item">
                                 <span class="cert-name">eJPT v1 - Junior Penetration Tester</span>
-                                <span class="cert-status completed">Completed</span>
+                                <span class="cert-status content">Covered</span>
                             </div>
                             <div class="cert-item">
                                 <span class="cert-name">arcX Threat Intelligence</span>
@@ -439,7 +462,7 @@
                             </div>
                             <div class="cert-item">
                                     <span class="cert-name">RH134/II - Red Hat System Administration II</span>
-                                    <span class="cert-status completed">Ongoing</span>
+                                    <span class="cert-status completed">Completed</span>
                                 </div>
                             </div>
                         </div>
@@ -462,33 +485,37 @@
                             <i class="fas fa-envelope"></i>
                             <span>omarhadyabass@gmail.com</span>
                         </a>
-                        <a href="https://www.linkedin.com/in/omarhadyalnajjar/" class="contact-method">
+                        <a href="https://www.linkedin.com/in/omarhadyalnajjar/" class="contact-method" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn contact">
                             <i class="fab fa-linkedin"></i>
                             <span>LinkedIn</span>
                         </a>
-                        <a href="https://github.com/omar-hady" class="contact-method">
+                        <a href="https://github.com/omar-hady" class="contact-method" target="_blank" rel="noopener noreferrer" aria-label="GitHub contact">
                             <i class="fab fa-github"></i>
                             <span>GitHub</span>
                         </a>
-                        <a href="https://wa.me/201552723383" class="contact-method">
+                        <a href="https://wa.me/201552723383" class="contact-method" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp contact">
                             <i class="fab fa-whatsapp"></i>
                             <span>WhatsApp</span>
                         </a>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form action="https://formsubmit.co/omarhadyabass@gmail.com" method="POST" aria-label="Contact form" accept-charset="UTF-8">
+                        <input type="hidden" name="_subject" value="New message from portfolio (SECURE_CHANNELS)">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="text" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false">
                         <div class="form-group">
-                            <input type="text" placeholder="Full Name" required>
+                            <input type="text" name="name" placeholder="Full Name" aria-label="Full Name" autocomplete="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Email Address" required>
+                            <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" autocomplete="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
+                            <input type="text" name="subject" placeholder="Subject" aria-label="Subject" autocomplete="on" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
+                            <textarea name="message" placeholder="Your Message" rows="5" aria-label="Your Message" autocomplete="on" required></textarea>
                         </div>
                         <button type="submit" class="submit-btn">
                             <span class="btn-text">Send Secure Message</span>
@@ -536,6 +563,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=3" defer></script>
 </body>
 </html>

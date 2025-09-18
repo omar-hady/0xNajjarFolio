@@ -432,21 +432,43 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.nav-btn.next');
     let currentProject = 0;
 
+    // Unified projects data model
     const projects = [
         {
             title: 'LinkGuardian',
             description: 'Advanced phishing URL detection system with real-time analysis and visual reporting. Uses machine learning algorithms to identify malicious links and protect users from cyber threats.',
-            tech: ['Python', 'Machine Learning', 'Web Scraping', 'Flask']
+            tech: ['Python', 'Machine Learning', 'Web Scraping', 'Flask'],
+            badge: 'Featured'
         },
         {
-            title: 'NetworkScanner',
+            title: 'Network Scanner',
             description: 'Comprehensive network reconnaissance tool for port scanning and device discovery.',
-            tech: ['Python', 'Socket', 'Nmap']
+            tech: ['Python', 'Socket', 'Nmap'],
+            badge: 'Unreleased'
         },
         {
-            title: 'SecurePassManager',
+            title: 'Secure Pass Manager',
             description: 'Encrypted password manager with advanced security features and breach monitoring.',
-            tech: ['Python', 'Crypto', 'SQLite']
+            tech: ['Python', 'Crypto', 'SQLite'],
+            badge: 'Unreleased'
+        },
+        {
+            title: 'Digital Forensics Tool',
+            description: 'Digital evidence collection and analysis tool for incident response and investigations.',
+            tech: ['Python', 'Forensics', 'Volatility'],
+            badge: 'Unreleased'
+        },
+        {
+            title: 'Threat Intel Platform',
+            description: 'Threat intelligence gathering and analysis platform for proactive security monitoring.',
+            tech: ['Python', 'APIs', 'Django'],
+            badge: 'Unreleased'
+        },
+        {
+            title: 'Vuln Scanner',
+            description: 'Automated vulnerability scanner with detailed reporting and remediation guidance.',
+            tech: ['Python', 'Nmap', 'Reports'],
+            badge: 'Unreleased'
         }
     ];
 
@@ -458,9 +480,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const titleElement = projectCard.querySelector('.project-title');
             const descElement = projectCard.querySelector('.project-description');
             const techContainer = projectCard.querySelector('.project-tech');
+            const badgeElement = projectCard.querySelector('.project-badge');
             
             if (titleElement) titleElement.textContent = project.title;
             if (descElement) descElement.textContent = project.description;
+            if (badgeElement) {
+                // Update badge text
+                const isFeatured = (project.badge || '').toLowerCase() === 'featured';
+                badgeElement.textContent = isFeatured ? 'Featured' : 'Unreleased';
+                // Toggle badge classes for styling
+                badgeElement.classList.remove('featured', 'unreleased');
+                badgeElement.classList.add(isFeatured ? 'featured' : 'unreleased');
+            }
             
             if (techContainer) {
                 techContainer.innerHTML = '';
@@ -486,54 +517,101 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Render [PROJECTS] grid dynamically from unified data model
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (projectsGrid) {
+        projectsGrid.innerHTML = '';
+        projects.forEach((project) => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+
+            const header = document.createElement('div');
+            header.className = 'project-header';
+
+            const title = document.createElement('h3');
+            title.className = 'project-title';
+            title.textContent = project.title;
+
+            const badge = document.createElement('div');
+            const isFeatured = (project.badge || '').toLowerCase() === 'featured';
+            badge.className = `project-badge ${isFeatured ? 'featured' : 'unreleased'}`;
+            badge.textContent = isFeatured ? 'Featured' : 'Unreleased';
+
+            header.appendChild(title);
+            header.appendChild(badge);
+
+            const desc = document.createElement('p');
+            desc.textContent = project.description;
+
+            const tech = document.createElement('div');
+            tech.className = 'project-tech';
+            project.tech.forEach(t => {
+                const tag = document.createElement('span');
+                tag.className = 'tech-tag';
+                tag.textContent = t;
+                tech.appendChild(tag);
+            });
+
+            card.appendChild(header);
+            card.appendChild(desc);
+            card.appendChild(tech);
+            projectsGrid.appendChild(card);
+        });
+    }
+
     // Form submission handling
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    // AJAX contact form submission to avoid leaving the page
+    const ajaxForm = document.querySelector('.contact-form form');
+    if (ajaxForm) {
+        ajaxForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Get form data
-            const nameInput = this.querySelector('input[type="text"]');
-            const emailInput = this.querySelector('input[type="email"]');
-            const subjectInput = this.querySelectorAll('input[type="text"]')[1];
-            const messageInput = this.querySelector('textarea');
-            
-            if (!nameInput || !emailInput || !subjectInput || !messageInput) return;
-            
-            const name = nameInput.value;
-            const email = emailInput.value;
-            const subject = subjectInput.value;
-            const message = messageInput.value;
-            
-            // Simple validation
+
+            const form = e.currentTarget;
+            const name = form.querySelector('input[name="name"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const subject = form.querySelector('input[name="subject"]').value.trim();
+            const message = form.querySelector('textarea[name="message"]').value.trim();
+
             if (!name || !email || !subject || !message) {
                 showNotification('Please fill in all required fields', 'error');
                 return;
             }
-            
-            // Email validation
+
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 showNotification('Please enter a valid email address', 'error');
                 return;
             }
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('.submit-btn');
-            if (submitBtn) {
-                const btnText = submitBtn.querySelector('.btn-text');
-                if (btnText) {
-                    const originalText = btnText.textContent;
-                    btnText.textContent = 'Sending...';
-                    submitBtn.disabled = true;
-                    
-                    setTimeout(() => {
-                        showNotification('Message sent successfully! I will get back to you soon.', 'success');
-                        this.reset();
-                        btnText.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }, 2000);
+
+            const submitBtn = form.querySelector('.submit-btn');
+            const btnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
+            const originalText = btnText ? btnText.textContent : '';
+            if (btnText) btnText.textContent = 'Sending...';
+            if (submitBtn) submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData(form);
+                // FormSubmit note: autoresponse disabled for AJAX per docs
+                const endpoint = form.getAttribute('action');
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showNotification('Message sent successfully! I will get back to you soon.', 'success');
+                    form.reset();
+                } else {
+                    showNotification('Failed to send. Please try again later.', 'error');
                 }
+            } catch (err) {
+                showNotification('Network error. Please try again.', 'error');
+            } finally {
+                if (btnText) btnText.textContent = originalText || 'Send Secure Message';
+                if (submitBtn) submitBtn.disabled = false;
             }
         });
     }
@@ -832,8 +910,8 @@ document.addEventListener('DOMContentLoaded', function() {
 %c💻 Built with modern web technologies
 %c🚀 Ready to secure your digital assets
 %c
-%cContact: omar.alnajjar@example.com
-%cGitHub: https://github.com/omaralnajjar
+%cContact: omarhadyabass@gmail.com
+%cGitHub: https://github.com/omar-hady
 `,
 'color: #00b4d8; font-size: 20px; font-weight: bold; font-family: "JetBrains Mono", monospace;',
 '',
@@ -844,6 +922,15 @@ document.addEventListener('DOMContentLoaded', function() {
 'color: #b0b0b0; font-size: 12px; font-family: "JetBrains Mono", monospace;',
 'color: #b0b0b0; font-size: 12px; font-family: "JetBrains Mono", monospace;'
     );
+
+    // Show success notification if redirected after FormSubmit
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') {
+        showNotification('Message sent successfully! I will get back to you soon.', 'success');
+        // Clean the URL without reloading
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
 });
 
 // Notification system
@@ -864,18 +951,25 @@ const showNotification = (message, type) => {
         transition: transform 0.3s ease;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     `;
+    notification.setAttribute('role', type === 'success' ? 'status' : 'alert');
+    notification.setAttribute('aria-live', type === 'success' ? 'polite' : 'assertive');
     notification.textContent = message;
     
     document.body.appendChild(notification);
     
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const enterDelay = prefersReducedMotion ? 0 : 100;
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
-    }, 100);
+    }, enterDelay);
     
+    const leaveDelay = prefersReducedMotion ? 2000 : 3000;
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 3000);
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, prefersReducedMotion ? 0 : 300);
+    }, leaveDelay);
 };
