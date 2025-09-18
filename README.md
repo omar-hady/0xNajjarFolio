@@ -86,9 +86,9 @@ If you experience any issues:
 4. **JavaScript Enabled**: Make sure JavaScript is enabled in your browser
 
 ## Contact
-- **Email**: omar.alnajjar@example.com
-- **GitHub**: https://github.com/omaralnajjar
-- **LinkedIn**: https://linkedin.com/in/omaralnajjar
+- **Email**: omarhadyabass@gmail.com
+- **GitHub**: https://github.com/omar-hady
+- **LinkedIn**: https://linkedin.com/in/omarhadyalnajjar
 
 ## License
 This project is open source and available under the MIT License.
